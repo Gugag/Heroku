@@ -5,14 +5,11 @@
   "scripts": {
     "start": "node server.js"
   },
-    "dependencies": {
-    "express": "^4.17.1"
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
   },
-
-    "dependencies": {
-  "node-fetch": "^2.6.1"
-    },
-   "engines": {
+  "engines": {
     "node": "14.x"
   },
   "keywords": [],
@@ -20,4 +17,5 @@
   "license": "ISC",
   "description": ""
 }
+
 

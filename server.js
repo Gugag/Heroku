@@ -7,12 +7,14 @@ const port = process.env.PORT || 49890;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Add CORS middleware to enable CORS for all routes
 app.use(cors());
 
-// Handle OPTIONS requests for the /sendSMS endpoint
+// Handle OPTIONS requests for the /sendSMS path
 app.options('/sendSMS', cors());
 
-// Handle POST requests for the /sendSMS endpoint
+// Handle POST requests for the /sendSMS path
 app.post('/sendSMS', async (req, res) => {
     const { personNumber, textInput } = req.body;
 

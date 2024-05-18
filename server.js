@@ -21,7 +21,7 @@ app.post('/sendSMS', async (req, res) => {
     const response = await fetch('https://api.twilio.com/2010-04-01/Accounts/ACd2799421f889c5a61dc6dc8ed5c31dec/Messages.json', {
         method: 'POST',
         headers: {
-            'Authorization': 'Basic ' + Buffer.from('ACd2799421f889c5a61dc6dc8ed5c31dec:2225af7e5b6ab7a039111f419b806814').toString('base64'),
+            'Authorization': 'Basic ' + Buffer.from('SK14f4db5de3fb7021008833a93182f3c5:5Kox379UKKcXkZ9Bil3JCfs1PPQHwoc6').toString('base64'),
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: new URLSearchParams({

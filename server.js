@@ -12,6 +12,17 @@ app.use(bodyParser.json());
 
 // Add CORS middleware to enable CORS for all routes
 app.use(cors());
+const path = require('path'); // Import the path module
+
+// Define a route handler for the root path ("/")
+app.get('/', (req, res) => {
+    // Use the path module to get the absolute path to your HTML file
+    const indexPath = path.join(__dirname, 'index.html');
+    
+    // Serve the HTML file
+    res.sendFile(indexPath);
+});
+
 
 // Handle OPTIONS requests for the /sendSMS path
 app.options('/sendSMS', cors());

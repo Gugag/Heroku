@@ -17,14 +17,19 @@ app.use(cors());
 app.options('/sendSMS', cors());
 
 // Handle POST requests for the /sendSMS path
+// Handle POST requests for the /sendSMS path
 app.post('/sendSMS', async (req, res) => {
     const { personNumber, textInput } = req.body;
 
     try {
-        const response = await fetch('https://api.twilio.com/2010-04-01/Accounts/' + process.env.TWILIO_ACCOUNT_SID + '/Messages.json', {
+        const accountSid = process.env.TWILIO_ACCOUNT_SID;
+        const authToken = process.env.TWILIO_AUTH_TOKEN;
+        const auth = Buffer.from(accountSid + ':' + authToken).toString('base64');
+
+        const response = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`, {
             method: 'POST',
             headers: {
-                'Authorization': 'Basic ' + Buffer.from(process.env.TWILIO_API_KEY + ':' + process.env.TWILIO_API_SECRET).toString('base64'),
+                'Authorization': `Basic ${auth}`,
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: new URLSearchParams({
@@ -44,6 +49,7 @@ app.post('/sendSMS', async (req, res) => {
         res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
 });
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

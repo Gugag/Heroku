@@ -19,34 +19,6 @@
 
     <p id="responseMessage"></p>
 
-    <script>
-        document.getElementById('smsForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const personNumber = document.getElementById('personNumber').value;
-            const textInput = document.getElementById('textInput').value;
-
-            try {
-                const response = await fetch('https://agile-forest-00225-6490eab62a1e.herokuapp.com/sendSMS', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ personNumber, textInput })
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    document.getElementById('responseMessage').textContent = 'SMS sent successfully!';
-                } else {
-                    document.getElementById('responseMessage').textContent = 'Failed to send SMS: ' + (data.error.message || 'Unknown error');
-                }
-            } catch (error) {
-                document.getElementById('responseMessage').textContent = 'Failed to send SMS: ' + error.message;
-            }
-        });
-    </script>
 </body>
 </html>
 

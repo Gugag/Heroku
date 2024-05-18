@@ -8,18 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Send SMS</h1>
-    <form id="smsForm">
-        <label for="personNumber">Phone Number:</label>
-        <input type="text" id="personNumber" name="personNumber" required>
-        <br>
-        <label for="textInput">Message:</label>
-        <textarea id="textInput" name="textInput" required></textarea>
-        <br>
-        <button type="submit">Send SMS</button>
-    </form>
-
-    <p id="responseMessage"></p>
+    <div class="container">
+        <input type="text" id="textInput" placeholder="SMS Text">
+        <input type="text" id="numberInput" placeholder="Mobile XXX XX XX XX"> 
+        <button class="button" onclick="sendSMS()">Send</button>
+    </div>
+    <div id="alertMessage" class="alert" style="display: none;"></div>
 
 </body>
 </html>
